@@ -1,9 +1,16 @@
 # ローカル開発環境の手引き
 
-## SAMCLIのインストール
+## インストールするもの
+
+### SAMCLIのインストール
 
 https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/sam-cli-requirements.html  
 を参考にする。  
+
+### Docker for Macのインストール
+
+ローカルで実行する際、Dockerが必要となる。  
+自分のPCはMacであるため、`Docker for Mac`のインストールを推奨する。
 
 ## 実行手順
 
@@ -26,3 +33,11 @@ Netlify公式が用意してくれている以下サンプルから、
 
 配置した実行ファイルのパスやファイル名を元に、  
 `template.yml`の内容を編集後、`sam local start-api`で起動。
+
+### コマンド
+
+```bash
+GOOS=linux GOARCH=amd64 go build -o ./functions/hello ./source/hello
+GOOS=linux GOARCH=amd64 go build -o ./functions/json ./source/json
+sam local start-api
+```
